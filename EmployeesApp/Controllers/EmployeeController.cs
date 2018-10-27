@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-
 using Microsoft.EntityFrameworkCore;
 using EmployeesApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using EmployeesApp.Data;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace EmployeesApp.Controllers
 {
@@ -45,12 +41,6 @@ namespace EmployeesApp.Controllers
             
         }
 
-        // GET api/Employee/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST api/Employee
         [HttpPost]
@@ -87,11 +77,6 @@ namespace EmployeesApp.Controllers
             return Ok();
         }
 
-        // PUT api/Employee/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
         // DELETE api/Employee/5
         [HttpDelete("{id}")]

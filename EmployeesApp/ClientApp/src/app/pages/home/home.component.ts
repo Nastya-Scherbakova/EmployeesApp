@@ -3,7 +3,6 @@ import { ApiService } from '../../services/api.service';
 import { Observable, Subscription } from 'rxjs';
 import Employee from '../../models/employee';
 import { MatDialog } from '@angular/material/dialog';
-import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 
 @Component({
