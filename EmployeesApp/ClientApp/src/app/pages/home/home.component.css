@@ -1,0 +1,10 @@
+table {
+  width: 90%;
+
+}
+
+.home-page{
+  margin-top: 70px;
+  display: flex;
+  justify-content:center;
+}

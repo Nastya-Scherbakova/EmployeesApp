@@ -1,0 +1,40 @@
+<section class="home-page">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="!loading">
+
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="jobTitle">
+      <th mat-header-cell *matHeaderCellDef> Job title </th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngFor="let job of element.employeeJobs; let i = index">
+          {{ job.job.title }} <span *ngIf="element.employeeJobs.length > 1 && i != element.employeeJobs.length-1"> & </span>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="emplDate">
+      <th mat-header-cell *matHeaderCellDef> Employment Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.employmentDate | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rate">
+      <th mat-header-cell *matHeaderCellDef> Rate </th>
+      <td mat-cell *matCellDef="let element"> {{element.rate | currency}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element"> <button mat-flat-button color="warn" (click)="deleteEmployee(element.id)">Delete</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+</section>

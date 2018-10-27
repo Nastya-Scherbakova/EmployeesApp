@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Add Employee</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="First Name" [formControl]="firstNameFormControl" required>
+    <mat-error *ngIf="firstNameFormControl.hasError('required')">
+      First Name is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="firstNameFormControl.hasError('pattern') && !firstNameFormControl.hasError('required')">
+      First Name can contain only <strong>letters</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Last Name" [formControl]="lastNameFormControl" required>
+    <mat-error *ngIf="lastNameFormControl.hasError('required')">
+      Last Name is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="lastNameFormControl.hasError('pattern') && !lastNameFormControl.hasError('required')">
+      Last Name can contain only <strong>letters</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [owlDateTime]="dt1" [(ngModel)]="date.value" [owlDateTimeTrigger]="dt1" [max]="maxDate" placeholder="Employment Date">
+    <owl-date-time #dt1></owl-date-time>
+  </mat-form-field>
+
+  <mat-form-field>
+    <span matPrefix>$ &nbsp;</span>
+    <input matInput placeholder="Rate" type="number" min="1" [(ngModel)]="newEmployee.rate" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Job Title" [formControl]="jobFormControl" multiple required>
+      <mat-option *ngFor="let job of jobs | async" [value]="job">
+        {{job.title}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="jobFormControl.hasError('required')">Please choose at least one job</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Back</button>
+  <button mat-button cdkFocusInitial (click)="addEmployee()">Save</button>
+</div>

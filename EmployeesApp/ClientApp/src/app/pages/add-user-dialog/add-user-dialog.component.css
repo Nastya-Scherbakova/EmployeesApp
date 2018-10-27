@@ -1,0 +1,14 @@
+table {
+  width: 90%;
+
+}
+
+.home-page{
+  margin-top: 70px;
+  display: flex;
+  justify-content:center;
+}
+mat-form-field{
+  display: block;
+  margin: 5px 0;
+}
